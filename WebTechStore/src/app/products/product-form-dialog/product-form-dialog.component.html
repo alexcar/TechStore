@@ -1,0 +1,75 @@
+@if (toast(); as currentToast) {
+  <div
+    class="dialog-toast"
+    [class.dialog-toast-success]="currentToast.type === 'success'"
+    [class.dialog-toast-error]="currentToast.type === 'error'"
+    [attr.role]="currentToast.type === 'error' ? 'alert' : 'status'"
+  >
+    {{ currentToast.message }}
+  </div>
+}
+
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<form class="product-form" [formGroup]="form" (ngSubmit)="save()" novalidate>
+  <mat-dialog-content>
+    <div class="field">
+      <label class="field-label" id="product-category-label">
+        Categoria <span class="required-mark" aria-hidden="true">*</span>
+      </label>
+      <mat-form-field [class.field-valid]="isValid('categoryId')">
+        <mat-select
+          formControlName="categoryId"
+          aria-labelledby="product-category-label"
+          [canSelectNullableOptions]="true"
+          required
+        >
+          @if (!isEdit) {
+            <mat-option [value]="null">Selecione</mat-option>
+          }
+          @for (category of categories(); track category.id) {
+            <mat-option [value]="category.id">{{ category.name }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>{{ errorMessage('categoryId') }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="product-name">
+        Nome <span class="required-mark" aria-hidden="true">*</span>
+      </label>
+      <mat-form-field [class.field-valid]="isValid('name')">
+        <input matInput id="product-name" type="text" formControlName="name" autocomplete="off" required />
+        <mat-error>{{ errorMessage('name') }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="product-price">
+        Preço <span class="required-mark" aria-hidden="true">*</span>
+      </label>
+      <mat-form-field [class.field-valid]="isValid('price')">
+        <span matTextPrefix>R$&nbsp;</span>
+        <input
+          matInput
+          id="product-price"
+          type="number"
+          step="0.01"
+          inputmode="decimal"
+          formControlName="price"
+          autocomplete="off"
+          required
+        />
+        <mat-error>{{ errorMessage('price') }}</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-flat-button type="button" class="btn-cancelar" (click)="cancel()">Cancelar</button>
+    <button mat-flat-button type="submit" class="btn-salvar" [disabled]="saving() || categoriesFailed()">
+      {{ saving() ? 'Salvando...' : 'Salvar' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,56 @@
+@ApiTechStore_HostAddress = http://localhost:5250
+
+### Lista as categorias
+GET {{ApiTechStore_HostAddress}}/api/categories
+Accept: application/json
+
+### Lista os produtos em ordem alfabética
+GET {{ApiTechStore_HostAddress}}/api/products
+Accept: application/json
+
+### Obtém um produto
+GET {{ApiTechStore_HostAddress}}/api/products/1
+Accept: application/json
+
+### Inclui um produto
+POST {{ApiTechStore_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "name": "Backup em Nuvem SafeBox",
+  "price": 119.90
+}
+
+### Altera um produto
+PUT {{ApiTechStore_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "name": "Antivírus TechShield Pro",
+  "price": 159.90
+}
+
+### Exclui um produto
+DELETE {{ApiTechStore_HostAddress}}/api/products/1
+
+### Regra: nome repetido -> 409 Conflict
+POST {{ApiTechStore_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "categoryId": 2,
+  "name": "Curso Angular Essencial",
+  "price": 10
+}
+
+### Regra: nome com mais de 50 caracteres e preço zero -> 400 Bad Request
+POST {{ApiTechStore_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "name": "Um nome de produto propositalmente longo demais para o cadastro",
+  "price": 0
+}

@@ -1,0 +1,141 @@
+// Paleta da página principal (definida na especificação do trabalho).
+$page-bg: #ffffff;
+$row-bg: #ffffff;
+$row-alt-bg: #f8f9fa;
+$header-bg: #343a40;
+$grid-border: #e2e8f0;
+$grid-text: #2d3748;
+$row-hover-bg: #e6f7ff;
+$row-deleting-bg: #f8d7da;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $page-bg;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.page-title {
+  margin: 0 0 20px;
+  color: $grid-text;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.toolbar {
+  margin-bottom: 12px;
+}
+
+.grid-container {
+  overflow-x: auto;
+  border: 1px solid $grid-border;
+  border-radius: 6px;
+}
+
+.product-grid {
+  width: 100%;
+
+  --mat-table-background-color: #{$row-bg};
+  --mat-table-row-item-outline-color: #{$grid-border};
+  --mat-table-row-item-label-text-color: #{$grid-text};
+  --mat-table-header-headline-color: #ffffff;
+  --mat-table-header-headline-weight: 700;
+
+  .mat-mdc-header-row {
+    background: $header-bg;
+  }
+
+  .mat-mdc-header-cell {
+    background: $header-bg;
+    font-weight: 700;
+  }
+
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    border-right: 1px solid $grid-border;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  // Linhas alternadas: branco e cinza bem claro.
+  .mat-mdc-row {
+    cursor: pointer;
+    background: $row-bg;
+
+    &:nth-child(even) {
+      background: $row-alt-bg;
+    }
+
+    // Hover ou linha selecionada: azul bem claro.
+    &:hover,
+    &.row-selected {
+      background: $row-hover-bg;
+    }
+
+    // Linha aguardando a confirmação de exclusão: vermelho claro.
+    // Vem por último para prevalecer sobre o hover e a seleção.
+    &.row-deleting,
+    &.row-deleting:hover {
+      background: $row-deleting-bg;
+    }
+  }
+
+  .empty-row {
+    cursor: default;
+
+    &:hover {
+      background: $row-bg;
+    }
+
+    .mat-mdc-cell {
+      padding: 24px 16px;
+      text-align: center;
+    }
+  }
+}
+
+.col-price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.col-actions {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+
+  .btn + .btn {
+    margin-left: 8px;
+  }
+}
+
+.load-error {
+  color: #dc3545;
+}
+
+// Botões: Incluir verde, Alterar amarelo, Excluir vermelho, todos com texto branco.
+.btn {
+  --mdc-filled-button-label-text-color: #ffffff;
+  font-weight: 700;
+}
+
+.btn-incluir {
+  --mdc-filled-button-container-color: #28a745;
+}
+
+.btn-alterar {
+  --mdc-filled-button-container-color: #f0ad00;
+  // Sombra discreta para o texto branco continuar legível sobre o amarelo.
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+.btn-excluir {
+  --mdc-filled-button-container-color: #dc3545;
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>apitechstore-7d0b6c1e-3f4a-4c55-9a21-5e8f2b9c4d10</UserSecretsId>
+    <!-- Gera o XML dos comentários /// para o Swagger. 1591 = "falta comentário XML". -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.*" />
+    <PackageReference Include="Azure.Identity" Version="1.*" />
+    <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="1.*" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.*" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.*" />
+  </ItemGroup>
+
+</Project>

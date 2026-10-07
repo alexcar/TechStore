@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Excluir produto</h2>
+
+<mat-dialog-content>
+  <p class="confirm-message">{{ messages.delete.confirm }}</p>
+  <p class="confirm-product">{{ data.product.name }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button type="button" class="btn-nao" [disabled]="deleting()" (click)="cancel()">Não</button>
+  <button mat-flat-button type="button" class="btn-sim" [disabled]="deleting()" (click)="confirm()">
+    {{ deleting() ? 'Excluindo...' : 'Sim' }}
+  </button>
+</mat-dialog-actions>

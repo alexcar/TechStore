@@ -1,0 +1,98 @@
+// Paleta do formulário (definida na especificação do trabalho).
+$form-bg: #ffffff;
+$input-border: #d1d5db;
+$input-border-focus: #3b82f6;
+$label-text: #374151;
+$required-mark: #dc3545;
+$invalid: #dc3545;
+$valid: #28a745;
+$save-bg: #28a745;
+$cancel-bg: #e5e7eb;
+
+:host {
+  // Referência para posicionar o toast no canto superior direito do pop-up.
+  position: relative;
+  display: block;
+  background: $form-bg;
+}
+
+.product-form {
+  display: block;
+}
+
+.field {
+  margin-bottom: 14px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  color: $label-text;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+// Campo obrigatório: só o asterisco fica vermelho.
+.required-mark {
+  color: $required-mark;
+}
+
+mat-form-field {
+  width: 100%;
+
+  // Estado neutro, foco e erro das bordas dos inputs.
+  --mdc-outlined-text-field-outline-color: #{$input-border};
+  --mdc-outlined-text-field-hover-outline-color: #{$input-border};
+  --mdc-outlined-text-field-focus-outline-color: #{$input-border-focus};
+  --mdc-outlined-text-field-caret-color: #{$input-border-focus};
+  --mdc-outlined-text-field-error-outline-color: #{$invalid};
+  --mdc-outlined-text-field-error-hover-outline-color: #{$invalid};
+  --mdc-outlined-text-field-error-focus-outline-color: #{$invalid};
+  --mdc-outlined-text-field-error-caret-color: #{$invalid};
+  --mat-form-field-error-text-color: #{$invalid};
+  --mat-select-invalid-arrow-color: #{$invalid};
+  --mat-select-focused-arrow-color: #{$input-border-focus};
+
+  // Campo válido: borda verde, que cede para o azul enquanto o campo está em foco.
+  &.field-valid {
+    --mdc-outlined-text-field-outline-color: #{$valid};
+    --mdc-outlined-text-field-hover-outline-color: #{$valid};
+  }
+}
+
+.btn-salvar {
+  --mdc-filled-button-container-color: #{$save-bg};
+  --mdc-filled-button-label-text-color: #ffffff;
+}
+
+.btn-cancelar {
+  --mdc-filled-button-container-color: #{$cancel-bg};
+  --mdc-filled-button-label-text-color: #{$label-text};
+}
+
+// Toast no canto superior direito do pop-up.
+.dialog-toast {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-toast-success {
+  background: $valid;
+}
+
+.dialog-toast-error {
+  background: $invalid;
+}

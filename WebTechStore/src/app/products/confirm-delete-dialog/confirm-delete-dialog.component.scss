@@ -1,0 +1,20 @@
+.confirm-message {
+  margin: 0 0 8px;
+  color: #374151;
+}
+
+.confirm-product {
+  margin: 0;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.btn-sim {
+  --mdc-filled-button-container-color: #dc3545;
+  --mdc-filled-button-label-text-color: #ffffff;
+}
+
+.btn-nao {
+  --mdc-filled-button-container-color: #e5e7eb;
+  --mdc-filled-button-label-text-color: #374151;
+}

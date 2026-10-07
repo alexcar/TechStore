@@ -1,0 +1,51 @@
+@use '@angular/material' as mat;
+
+// Tema do Angular Material 19 (Material 3), sempre claro.
+html {
+  color-scheme: light;
+
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        theme-type: light,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #2d3748;
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Pop-ups com fundo branco e cantos discretos.
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: #ffffff;
+  --mdc-dialog-container-shape: 8px;
+  --mdc-dialog-subhead-color: #2d3748;
+  --mdc-dialog-supporting-text-color: #374151;
+}
+
+// Toasts da página (MatSnackBar). Ficam aqui porque o snackbar é criado fora dos componentes.
+.toast {
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mdc-snackbar-supporting-text-weight: 500;
+}
+
+.toast-success {
+  --mdc-snackbar-container-color: #28a745;
+}
+
+.toast-error {
+  --mdc-snackbar-container-color: #dc3545;
+}
