@@ -3,5 +3,5 @@
 // O endereço está em: portal do Azure > App Service > Visão geral > Domínio padrão.
 export const environment = {
   production: true,
-  apiUrl: 'https://SEU-APP-SERVICE.azurewebsites.net/api',
+  apiUrl: 'https://app-apitechstore-ac01-bebhb4gpf3cyfph7.brazilsouth-01.azurewebsites.net/api',
 };
